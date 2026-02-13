@@ -1,6 +1,8 @@
 # Minimal Patch for stab_ESM_IF.ipynb - Colab compatibility
 
-**Updates: This is no longer needed as of 2026-02-13, the developer has updated the notebook to use the correct Python environment.** This patch changes the [original colab notebook](https://colab.research.google.com/github/KULL-Centre/_2024_cagiada_stability/blob/main/stab_ESM_IF.ipynb).
+**Updates: This is no longer needed as of 2026-02-13, the developer has updated the notebook to use the correct Python environment.**
+
+This patch changes the [original colab notebook](https://colab.research.google.com/github/KULL-Centre/_2024_cagiada_stability/blob/main/stab_ESM_IF.ipynb). It fixes `ModuleNotFoundError` for `esm` and `torch_geometric`.
 
 ## Why
 After condacolab installs, `os.system("pip install ...")` and `conda install` can install to the wrong Python environment, causing `ModuleNotFoundError` for `esm` and `torch_geometric`.
