@@ -42,6 +42,7 @@ if not os.path.isfile(IF_model_name):
     subprocess.run(pip_install + ["torch_geometric"], check=True)
     print('...finished torch dependencies')
     subprocess.run(pip_install + ["biopython", "biotite"], check=True)
+    print("installing esmfold...")
     subprocess.run(pip_install + ["git+https://github.com/matteo-cagiada/esm.git"], check=True)
     open("finished_install", "w").close()
 
@@ -53,8 +54,7 @@ if not os.path.isfile(IF_model_name):
     while os.path.isfile(f"{IF_model_name}.aria2"):
       time.sleep(5)
 
-## Ensure deps in kernel's Python (runs every time, idempotent)
-subprocess.run([sys.executable, "-m", "pip", "install", "torch_geometric", "biopython", "biotite", "git+https://github.com/matteo-cagiada/esm.git"])
+## Verify that pytorch-geometric is correctly installed
 
 import esm
 

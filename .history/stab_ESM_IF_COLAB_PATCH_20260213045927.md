@@ -19,7 +19,7 @@ In the following block **PRELIMINARY OPERATIONS: Install dependencies**, replace
 
 **Instructions:**
 1. Double-click the cell to open the code editor.
-2. Delete the original install block (from the first `os.system(...)` to the last `os.system(...)`).
+2. Delete the original install block (from the first `os.system` through `os.system("touch finished_install")`). Keep the `print("installing libs...")` line above it.
 3. Paste the new code block (**tab-indentation required**).
 4. Run the cell.
 

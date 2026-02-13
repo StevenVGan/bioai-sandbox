@@ -18,9 +18,9 @@ After condacolab installs, `os.system("pip install ...")` and `conda install` ca
 In the following block **PRELIMINARY OPERATIONS: Install dependencies**, replace the install block inside `if not os.path.isfile("finished_install")` with the code below.
 
 **Instructions:**
-1. Double-click the cell to open the code editor.
-2. Delete the original install block (from the first `os.system(...)` to the last `os.system(...)`).
-3. Paste the new code block (**tab-indentation required**).
+1. Double click on the cell to open the code editor.
+2. Delete the original install block.
+3. Paste the new code block.
 4. Run the cell.
 
 **Original:**
@@ -71,7 +71,7 @@ Wall time: 1min 2s
 ```
 
 - The **Regression weights** warning is harmless (ESM-IF does not use contact prediction).
-- Wall time becomes **faster than the expected 5–10 min** (e.g. ~1 min).
+- Wall time can be **faster than the expected 5–10 min** (e.g. ~1 min).
 
 ---
 

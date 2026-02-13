@@ -1,6 +1,6 @@
-# Minimal Patch for stab_ESM_IF.ipynb - Colab compatibility
+# Minimal Patch for stab_ESM_IF.ipynb (Colab compatibility)
 
-This patch changes the **"PRELIMINARY OPERATIONS: Install dependencies"** cell in the [original colab notebook](https://colab.research.google.com/github/KULL-Centre/_2024_cagiada_stability/blob/main/stab_ESM_IF.ipynb). It fixes `ModuleNotFoundError` for `esm` and `torch_geometric`.
+Apply this change to the **"PRELIMINARY OPERATIONS: Install dependencies"** cell in the [original notebook](https://colab.research.google.com/github/KULL-Centre/_2024_cagiada_stability/blob/main/stab_ESM_IF.ipynb).
 
 ## Why
 After condacolab installs, `os.system("pip install ...")` and `conda install` can install to the wrong Python environment, causing `ModuleNotFoundError` for `esm` and `torch_geometric`.
@@ -9,19 +9,13 @@ After condacolab installs, `os.system("pip install ...")` and `conda install` ca
 
 ## Notes before applying
 
-**PRELIMINARY OPERATIONS: Install condalab** – This cell installs the correct Python environment for the notebook. If running this cell leads to a disconnect and reconnect, that is normal because there is a kernel restart at the end. If unsure, run the cell again; it should print `✨🍰✨ Everything looks OK!`
+**PRELIMINARY OPERATIONS: Install condalab** – This cell installs the correct Python environment for the notebook. If running this cell leads to a disconnect and reconnect, that is normal. Becuase there is a kernel restart at the end. If unsure, run the cell again; it should print `✨🍰✨ Everything looks OK!`
 
 ---
 
 ## IMPORTANT: Replace the install block in dependencies
 
 In the following block **PRELIMINARY OPERATIONS: Install dependencies**, replace the install block inside `if not os.path.isfile("finished_install")` with the code below.
-
-**Instructions:**
-1. Double-click the cell to open the code editor.
-2. Delete the original install block (from the first `os.system(...)` to the last `os.system(...)`).
-3. Paste the new code block (**tab-indentation required**).
-4. Run the cell.
 
 **Original:**
 ```python
@@ -47,7 +41,6 @@ In the following block **PRELIMINARY OPERATIONS: Install dependencies**, replace
     subprocess.run(pip_install + ["torch_geometric"], check=True)
     print('...finished torch dependencies')
     subprocess.run(pip_install + ["biopython", "biotite"], check=True)
-    print("installing esmfold...")
     subprocess.run(pip_install + ["git+https://github.com/matteo-cagiada/esm.git"], check=True)
     open("finished_install", "w").close()
 ```
@@ -56,7 +49,8 @@ In the following block **PRELIMINARY OPERATIONS: Install dependencies**, replace
 
 ## Expected output of the patched cell
 
-In the **PRELIMINARY OPERATIONS: Install dependencies** cell, when this patch runs successfully, you should see something like the following output:
+**PRELIMINARY OPERATIONS: Install dependencies**
+When the patched cell runs successfully, you should see something like:
 
 ```
 installing libs...
@@ -71,7 +65,7 @@ Wall time: 1min 2s
 ```
 
 - The **Regression weights** warning is harmless (ESM-IF does not use contact prediction).
-- Wall time becomes **faster than the expected 5–10 min** (e.g. ~1 min).
+- Wall time can be **faster than the expected 5–10 min** (e.g. ~1 min).
 
 ---
 
@@ -85,3 +79,9 @@ Validated with values based on the [spreadsheet](https://docs.google.com/spreads
 | YP_009724390.1_ref_RBD_SWISS (SWISS-MODEL) | 87.47504538903013 | 9.725362356565233 |
 
 Both results closely match the original spreadsheet.
+
+
+## Summary
+
+- Replaced the install block in **PRELIMINARY OPERATIONS: Install dependencies**. Fixes `ModuleNotFoundError` for esm/torch_geometric.
+- Verified with values on YP_009724390.1 sample protein.
